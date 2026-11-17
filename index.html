@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Emajic Applications</title>
+<meta name="description" content="Emajic Applications: web apps including Emajic Attendance, Renovation Manager, Renovation Cash Management, Daquis Build and Tamaraw Schedule.">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Figtree:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: header, services grid, footer. Monochrome like the EM house mark, brass used sparingly. */
+:root{
+  --bg:#F3F3F1; --surface:#FFFFFF; --ink:#111111; --muted:#5E5E5A; --line:#DADAD5;
+  --spark:#9A7328; --spark-ink:#FFFFFF; --glow:#2F8A62; --code-bg:#111111; --code-fg:#EDEDE8; --code-dim:#8E8E88;
+  --display:"Poppins", "Segoe UI", system-ui, sans-serif;
+  --body:"Figtree", "Segoe UI", system-ui, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --wrap:1120px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#121211; --surface:#1B1B1A; --ink:#F0F0EB; --muted:#A6A6A0; --line:#2F2F2D;
+  --spark:#D4AF63; --spark-ink:#15120B; --glow:#5CC596; --code-bg:#0A0A0A; --code-fg:#EDEDE8; --code-dim:#86867F; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#121211; --surface:#1B1B1A; --ink:#F0F0EB; --muted:#A6A6A0; --line:#2F2F2D;
+  --spark:#D4AF63; --spark-ink:#15120B; --glow:#5CC596; --code-bg:#0A0A0A; --code-fg:#EDEDE8; --code-dim:#86867F; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:var(--wrap);margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance;letter-spacing:-0.03em}
+p{margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--spark);outline-offset:3px;border-radius:4px}
+.eyebrow{font-family:var(--mono);font-size:12.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+
+/* Nav */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:700;font-size:19px}
+.brand svg{width:50px;height:39px;flex:none;color:var(--ink)}
+.brand{font-weight:800;letter-spacing:-0.02em}
+.brand small{letter-spacing:.2em;display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);line-height:1.2}
+.nav ul{display:flex;gap:28px;list-style:none;margin:0;padding:0;font-weight:500;font-size:15px}
+.nav ul a{text-decoration:none;color:var(--muted)}
+.nav ul a:hover{color:var(--ink)}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 15px/1 var(--body);padding:13px 20px;border-radius:999px;border:1.5px solid var(--ink);background:var(--ink);color:var(--bg);text-decoration:none;cursor:pointer;transition:transform .15s,background .15s}
+.btn:hover{transform:translateY(-1px)}
+.btn.spark{background:var(--spark);border-color:var(--spark);color:var(--spark-ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+@media (max-width:820px){.nav ul{display:none}}
+
+
+/* Sections */
+section{padding-block:88px}
+@media (max-width:820px){section{padding-block:56px}}
+.svc .open{margin-top:auto;font-family:var(--mono);font-size:13.5px;font-weight:500;color:var(--spark);text-underline-offset:3px;word-break:break-all}
+.services{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.svc{padding:28px 26px 32px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);display:flex;flex-direction:column;gap:12px;min-width:0;transition:background .2s}
+.svc:hover{background:var(--surface)}
+.svc .tag{font-family:var(--mono);font-size:12px;color:var(--spark)}
+.svc h3{font-size:23px;font-weight:700}
+.svc p{color:var(--muted);font-size:16px}
+@media (max-width:900px){.services{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:560px){.services{grid-template-columns:1fr}}
+
+
+footer{padding-block:32px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:14px;color:var(--muted)}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <g id="em">
+      <g fill="none" stroke="currentColor" stroke-width="14" stroke-linecap="round">
+        <path d="M248 565 685 313M553 313 1104 632M304 482v480M1040 548v414M247 900h858"/>
+      </g>
+      <path fill="currentColor" d="M333 877V548l287-160v32L359 566v311z"/>
+      <path fill="currentColor" d="M620 388l397 227v262H620z"/>
+      <path fill="none" stroke="currentColor" stroke-opacity=".82" stroke-width="13" d="M381 869V581l209-117v405z"/>
+      <path fill="currentColor" fill-opacity=".82" d="M420 605l133-78v305H420v-37h100v-88h-64v-25h64v-97l-100 56z"/>
+      <path fill="var(--bg)" d="M665 830V460l310 180v200h-32V658l-109-61v233h-32V578l-105-63v315z"/>
+    </g>
+  </defs>
+  <symbol id="spark" viewBox="0 0 24 24"><path d="M12 0c.7 6.3 5 10.9 12 12-7 1.1-11.3 5.7-12 12-.7-6.3-5-10.9-12-12C7 10.9 11.3 6.3 12 0z"/></symbol>
+</svg>
+
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#top" aria-label="Emajic Applications home">
+      <svg viewBox="235 300 880 670" aria-hidden="true"><use href="#em"/></svg>
+      <span>Emajic<small>Applications</small></span>
+    </a>
+    <a class="btn spark" href="#services">What we build</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <section id="services">
+    <div class="wrap">
+      <div class="services">
+        <article class="svc"><span class="tag">/live-app</span><h3>Emajic Attendance</h3><p>Our attendance web app. Open it in your browser on any device.</p><a class="open" href="https://kir-attendance-nine.vercel.app/" target="_blank" rel="noopener">kir-attendance-nine.vercel.app ↗</a></article>
+        <article class="svc"><span class="tag">/live-app</span><h3>Renovation Manager</h3><p>Our renovation project management web app. Open it in your browser on any device.</p><a class="open" href="https://renovation-manager-app.vercel.app/" target="_blank" rel="noopener">renovation-manager-app.vercel.app ↗</a></article>
+        <article class="svc"><span class="tag">/live-app</span><h3>Renovation Cash Management</h3><p>Our web app for managing renovation project cash. Open it in your browser on any device.</p><a class="open" href="https://renovation-cash-management.vercel.app/projects" target="_blank" rel="noopener">renovation-cash-management.vercel.app ↗</a></article>
+        <article class="svc"><span class="tag">/live-app</span><h3>Daquis Build</h3><p>Our Daquis Build web app. Open it in your browser on any device.</p><a class="open" href="https://daquis-build.vercel.app/" target="_blank" rel="noopener">daquis-build.vercel.app ↗</a></article>
+        <article class="svc"><span class="tag">/live-app</span><h3>Emajic</h3><p>Our Emajic web app. Open it in your browser on any device.</p><a class="open" href="https://emajic.vercel.app/" target="_blank" rel="noopener">emajic.vercel.app ↗</a></article>
+        <article class="svc"><span class="tag">/live-app</span><h3>Tamaraw Schedule</h3><p>Our live scheduling web app. Open it in your browser on any device.</p><a class="open" href="https://tamaraw-schedule-live.vercel.app/" target="_blank" rel="noopener">tamaraw-schedule-live.vercel.app ↗</a></article>
+      </div>
+    </div>
+  </section>
+
+
+
+</main>
+
+<footer>
+  <div class="wrap foot">
+    <span style="display:flex;align-items:center;gap:10px"><svg viewBox="235 300 880 670" width="32" height="25" aria-hidden="true" style="color:var(--ink)"><use href="#em"/></svg>© 2026 Emajic Applications</span>
+    <span>Web applications, built with care.</span>
+  </div>
+</footer>
+
+
+</body>
+</html>
